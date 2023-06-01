@@ -1,0 +1,22 @@
+[{
+	"className": "OrderRoundItem",
+	"classNames": "OrderRoundItems",
+	"packageName": "org.eijsink",
+	"endpointUri": "api",
+	"methodUri": "orderrounditem",
+	"members": [{
+		"annotations": ["@Id",
+		"@GeneratedValue(strategy = GenerationType.AUTO)"],
+		"name": "id",
+		"type": "long"
+	},
+	{
+		"name": "item",
+		"type": "Item"
+	},
+	{
+		"name": "count",
+		"type": "int"
+	}]
+
+}]
