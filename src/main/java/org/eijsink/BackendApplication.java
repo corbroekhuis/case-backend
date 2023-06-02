@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 
 @SpringBootApplication
 public class BackendApplication implements CommandLineRunner {
 
+	private static ApplicationContext applicationContext;
 	@Value("${server.port}")
 	String port;
 
@@ -30,9 +32,16 @@ public class BackendApplication implements CommandLineRunner {
 	PaymentRepository paymentRepository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
-	}
 
+		applicationContext = SpringApplication.run(BackendApplication.class, args);
+		displayAllBeans();
+	}
+	public static void displayAllBeans() {
+		String[] allBeanNames = applicationContext.getBeanDefinitionNames();
+		for(String beanName : allBeanNames) {
+			System.out.println(beanName);
+		}
+	}
 	@Override
 	public void run(String... args) throws Exception {
 
