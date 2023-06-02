@@ -64,6 +64,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--
 			<plugin>
 				<groupId>com.capgemini</groupId>
 				<artifactId>crud-plugin</artifactId>
@@ -82,6 +83,7 @@
 					</sources>
 				</configuration>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 
