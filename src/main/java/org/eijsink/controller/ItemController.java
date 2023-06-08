@@ -2,7 +2,7 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
-import org.eijsink.service.ItemService;
+import org.eijsink.service.crud.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -64,7 +64,7 @@ public class ItemController {
 
     }
 
-    @DeleteMapping(value = "/item/{item}", produces = "text/plain")
+    @DeleteMapping(value = "/item/{id}", produces = "text/plain")
     public ResponseEntity<String> deleteItemById( @PathVariable final Long id) {
 
         logger.info("Inside 'deleteItemById'");

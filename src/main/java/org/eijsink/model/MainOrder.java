@@ -18,9 +18,6 @@ public class MainOrder{
 	private Ober ober;
 	@OneToMany
 	private List<OrderRound> orderRounds = new ArrayList<>();
-	@OneToMany
-	private List<Payment> payments = new ArrayList<>();
-	private boolean closed;
 
 	public MainOrder() {
 	}
@@ -60,18 +57,6 @@ public class MainOrder{
 	}
 	public void addOrderRound( OrderRound orderRound){
 		this.orderRounds.add(orderRound);
-	}
-	public List<Payment> getPayments(){ 
-		return payments;
-	}
-	public void addPayment( Payment payments){
-		this.payments.add(payments);
-	}
-	public boolean getClosed(){ 
-		return closed;
-	}
-	public void setClosed( boolean closed){
-		this.closed = closed;
 	}
 
 }

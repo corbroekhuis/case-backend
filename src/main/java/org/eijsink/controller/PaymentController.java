@@ -2,7 +2,7 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
-import org.eijsink.service.PaymentService;
+import org.eijsink.service.crud.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -64,7 +64,7 @@ public class PaymentController {
 
     }
 
-    @DeleteMapping(value = "/payment/{payment}", produces = "text/plain")
+    @DeleteMapping(value = "/payment/{id}", produces = "text/plain")
     public ResponseEntity<String> deletePaymentById( @PathVariable final Long id) {
 
         logger.info("Inside 'deletePaymentById'");

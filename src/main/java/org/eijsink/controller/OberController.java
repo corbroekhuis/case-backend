@@ -2,7 +2,7 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
-import org.eijsink.service.OberService;
+import org.eijsink.service.crud.OberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 

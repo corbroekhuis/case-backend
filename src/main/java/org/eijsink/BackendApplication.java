@@ -30,6 +30,8 @@ public class BackendApplication implements CommandLineRunner {
 	ItemRepository itemRepository;
 	@Autowired
 	PaymentRepository paymentRepository;
+	@Autowired
+	TicketRepository ticketRepository;
 
 	public static void main(String[] args) {
 
@@ -61,12 +63,14 @@ public class BackendApplication implements CommandLineRunner {
 		orderRoundRepository.save( orderRound);
 
 		mainOrder.addOrderRound( orderRound);
-
+		mainOrderRepository.save( mainOrder);
+		Ticket ticket = new Ticket();
+		ticket.setMainOrder(mainOrder);
 		Payment payment = new Payment(30.00, Payment.PAYMENT_TYPE.CARD);
 		paymentRepository.save( payment);
-		mainOrder.addPayment( payment);
+		ticket.addPayment( payment);
 
-		mainOrderRepository.save( mainOrder);
+		ticketRepository.save(ticket);
 
 		System.out.println("http://localhost:" + port + "/swagger-ui/index.html");
 		System.out.println("http://localhost:" + port + "/h2-console");

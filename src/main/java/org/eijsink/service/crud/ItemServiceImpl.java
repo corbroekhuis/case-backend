@@ -1,4 +1,4 @@
-package org.eijsink.service;
+package org.eijsink.service.crud;
 
 import org.eijsink.repository.ItemRepository;
 import org.eijsink.model.Item;
@@ -6,7 +6,12 @@ import org.eijsink.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -71,6 +76,19 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public void deleteAll(){
         itemRepository.deleteAll();
+    }
+
+    @Override
+    public Iterable<Item> filterByNameContaining( String chars) {
+
+        Iterable<Item> items = findAll();
+
+        List<Item> filtered = StreamSupport.stream(
+                        items.spliterator(), false)
+                .filter( i -> i.getName().contains( chars))
+                .collect(Collectors.toList());
+
+        return filtered;
     }
 
 }

@@ -2,7 +2,7 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
-import org.eijsink.service.OrderRoundItemService;
+import org.eijsink.service.crud.OrderRoundItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -64,7 +64,7 @@ public class OrderRoundItemController {
 
     }
 
-    @DeleteMapping(value = "/orderrounditem/{orderrounditem}", produces = "text/plain")
+    @DeleteMapping(value = "/orderrounditem/{id}", produces = "text/plain")
     public ResponseEntity<String> deleteOrderRoundItemById( @PathVariable final Long id) {
 
         logger.info("Inside 'deleteOrderRoundItemById'");

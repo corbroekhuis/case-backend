@@ -2,7 +2,7 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
-import org.eijsink.service.MainOrderService;
+import org.eijsink.service.crud.MainOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -64,7 +64,7 @@ public class MainOrderController {
 
     }
 
-    @DeleteMapping(value = "/mainorder/{mainorder}", produces = "text/plain")
+    @DeleteMapping(value = "/mainorder/{id}", produces = "text/plain")
     public ResponseEntity<String> deleteMainOrderById( @PathVariable final Long id) {
 
         logger.info("Inside 'deleteMainOrderById'");

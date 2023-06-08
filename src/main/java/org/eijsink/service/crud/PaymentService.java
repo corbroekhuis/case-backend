@@ -1,4 +1,4 @@
-package org.eijsink.service;
+package org.eijsink.service.crud;
 
 import org.eijsink.model.Payment;
 

@@ -1,4 +1,4 @@
-package org.eijsink.service;
+package org.eijsink.service.crud;
 
 import org.eijsink.model.Item;
 
@@ -27,6 +27,8 @@ public interface ItemService {
     public void deleteAll(Iterable<? extends Item> items);
 
     public void deleteAll();
+
+    Iterable< Item> filterByNameContaining( String name);
 
 }
 

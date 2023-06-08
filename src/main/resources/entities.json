@@ -1,9 +1,9 @@
 [{
-	"className": "OrderRoundItem",
-	"classNames": "OrderRoundItems",
+	"className": "Ticket",
+	"classNames": "Tickets",
 	"packageName": "org.eijsink",
 	"endpointUri": "api",
-	"methodUri": "orderrounditem",
+	"methodUri": "ticket",
 	"members": [{
 		"annotations": ["@Id",
 		"@GeneratedValue(strategy = GenerationType.AUTO)"],
@@ -11,12 +11,18 @@
 		"type": "long"
 	},
 	{
-		"name": "item",
-		"type": "Item"
+		"annotations": ["@OneToOne"],
+		"name": "mainOrder",
+		"type": "MainOrder"
 	},
 	{
-		"name": "count",
-		"type": "int"
+		"annotations": ["@OneToMany"],
+		"name": "payment",
+		"type": "List<Payment>"
+	},
+	{
+		"name": "closed",
+		"type": "boolean"
 	}]
 
 }]
