@@ -41,7 +41,7 @@ public class TicketController {
             ticketProcessService.procesTicket(ticket);
         } catch (EijsinkException e) {
             throw new ResponseStatusException(
-                    HttpStatus.UNPROCESSABLE_ENTITY, "Ticket not processed", e);
+                    HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage(), e);
         }
         Ticket closedTicket = ticketService.findById( ticketId).get();
         return ResponseEntity.ok(ticket) ;

@@ -2,8 +2,10 @@ package org.eijsink.controller;
 
 import java.util.Collections;
 
+import org.eijsink.exception.EijsinkException;
 import org.eijsink.service.crud.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import org.eijsink.model.Payment;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api")
@@ -27,11 +30,17 @@ public class PaymentController {
     }
 
     @PutMapping(value = "/payment", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Payment> savePayment( @RequestBody final Payment payment) {
+    public ResponseEntity<Payment> savePayment( @RequestBody final Payment payment,
+                        @RequestParam("cardNumber") String cardNumber ) {
 
         logger.info("Inside 'savePaymentById'");
 
-        paymentService.save(payment);
+        try {
+            paymentService.save(payment, cardNumber);
+        } catch (EijsinkException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage(), e);
+        }
         return ResponseEntity.ok(payment) ;
 
     }

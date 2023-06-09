@@ -1,12 +1,13 @@
 package org.eijsink.service.crud;
 
+import org.eijsink.exception.EijsinkException;
 import org.eijsink.model.Payment;
 
 import java.util.Optional;
 
 public interface PaymentService {
 
-    public Payment save(Payment payment);
+    public Payment save(Payment payment, String cardNumber) throws EijsinkException;
 
     public Iterable<Payment> saveAll(Iterable<Payment> payments);
 
