@@ -36,7 +36,7 @@ public class BackendApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 
 		applicationContext = SpringApplication.run(BackendApplication.class, args);
-		displayAllBeans();
+		// displayAllBeans();
 	}
 	public static void displayAllBeans() {
 		String[] allBeanNames = applicationContext.getBeanDefinitionNames();

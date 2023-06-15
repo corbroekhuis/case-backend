@@ -63,6 +63,21 @@ public class ItemController {
         }
 
     }
+    // http://localhost/api/item/filter
+    @GetMapping(value = "/item/filter", produces = "application/json")
+    public ResponseEntity<Iterable<Item>> filterItemsByChars(
+            @RequestParam("chars") String chars) {
+
+        logger.info("Inside 'filterItemsByChars'");
+
+        try {
+            Iterable<Item> items = itemService.filterByNameContaining( chars);
+            return ResponseEntity.ok( items);
+        } catch (Exception e) {
+            return ResponseEntity.ok( Collections.emptyList());
+        }
+
+    }
 
     @DeleteMapping(value = "/item/{id}", produces = "text/plain")
     public ResponseEntity<String> deleteItemById( @PathVariable final Long id) {

@@ -1,9 +1,13 @@
 package org.eijsink.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collections;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.eijsink.service.crud.OberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +31,10 @@ public class OberController {
     }
 
     @PutMapping(value = "/ober", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Ober> saveOber( @RequestBody final Ober ober) {
+    public ResponseEntity<Ober> saveOber( @RequestBody final Ober ober
+    , HttpServletRequest request
+                                          ) {
+
 
         logger.info("Inside 'saveOberById'");
 

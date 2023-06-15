@@ -81,14 +81,14 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public Iterable<Item> filterByNameContaining( String chars) {
 
-        Iterable<Item> items = findAll();
+        Iterable<Item> items = itemRepository.findAll();
 
         List<Item> filtered = StreamSupport.stream(
                         items.spliterator(), false)
                 .filter( i -> i.getName().contains( chars))
                 .collect(Collectors.toList());
 
-        return filtered;
+        return items;
     }
 
 }

@@ -33,7 +33,7 @@ public class PaymentController {
     public ResponseEntity<Payment> savePayment( @RequestBody final Payment payment,
                         @RequestParam("cardNumber") String cardNumber ) {
 
-        logger.info("Inside 'savePaymentById'");
+        logger.info("Inside 'savePayment'");
 
         try {
             paymentService.save(payment, cardNumber);
