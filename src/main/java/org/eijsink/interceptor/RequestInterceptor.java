@@ -18,20 +18,10 @@ public class RequestInterceptor implements HandlerInterceptor {
         System.out.println("PreHandle: ");
 
         // Toon alle request parameters
-        Enumeration<String> parameterNames = request.getParameterNames();
-        while( parameterNames.hasMoreElements()){
-            String name = parameterNames.nextElement();
-            System.out.println( "Parameter: " + request.getParameter( name));
 
-        }
 
         // Toon alle request headers
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while( headerNames.hasMoreElements()){
-            String name = headerNames.nextElement();
-            System.out.println( "Header: " + request.getHeader( name));
 
-        }
 
         return true;
 
@@ -42,11 +32,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 
         System.out.println("PostHandle: ");
         // Toon alle response headers
-        Collection<String> headerNames = response.getHeaderNames();
-        for( String name: headerNames){
-            System.out.println( "Header: " + request.getHeader( name));
 
-        }
 
     }
 
